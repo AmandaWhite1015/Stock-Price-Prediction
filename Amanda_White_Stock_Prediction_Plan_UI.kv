@@ -1,0 +1,42 @@
+<StockPredictorUI>:
+    orientation: 'vertical'
+    padding: 20
+    spacing: 15
+
+    Spinner:
+        id: ticker_spinner
+        text: 'Select Ticker'
+        values: ['AAPL', 'BTC-USD', 'XRP-USD', 'META', 'AMZN']
+        size_hint: (1, 0.15)
+
+    BoxLayout:
+        size_hint: (1, 0.15)
+        spacing: 10
+
+        TextInput:
+            id: start_input
+            hint_text: "Start Date (YYYY-MM-DD)"
+            multiline: False
+
+        TextInput:
+            id: end_input
+            hint_text: "End Date (YYYY-MM-DD)"
+            multiline: False
+
+    Button:
+        text: "Predict with Random Forest"
+        size_hint: (1, 0.15)
+        on_press: root.predict_model("rf")
+
+    Button:
+        text: "Predict with LSTM"
+        size_hint: (1, 0.15)
+        on_press: root.predict_model("lstm")
+
+    Label:
+        id: result_label
+        text: "Select a ticker and date range to start"
+        size_hint: (1, 0.4)
+        halign: 'center'
+        valign: 'middle'
+        text_size: self.size
